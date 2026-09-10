@@ -22,7 +22,7 @@ Trabalho de teoria da computação perguntas a ser respondidas!
 - instância: um caso específico de um problema.
 
 # decisão e otimização
-- decisão: dado um problema, existe uma solução que satisfaça as restrições?
+- decisão: dado um problema, existe uma solução que satisfaça as restrições? envolve uma pergunta de sim ou não.
 - otimização: dado um problema, qual é a melhor solução entre soluções validas?
 - maximizazar: encontrar a solução que maximize uma função objetivo.
 - minimizar: encontrar a solução que minimize uma função objetivo.
@@ -40,6 +40,7 @@ Trabalho de teoria da computação perguntas a ser respondidas!
 # Restrições devinem a validade de uma solução [regra obrigatória]
 - a resposta precisa preservar todos os elementos da entrada.
 - exemplo ordenação: não duplicar numeros e nem remover numeros da entrada. 
+- validade nao garante melhor solução, apenas que a solução é aceitável.
 
 # solução vailda não significa solução ótima
 - valida: satisfaz as restrições do problema.
