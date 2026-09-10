@@ -1,5 +1,5 @@
 from data import casos_de_teste
-from merge_sort import merge_sort
+from merge_sort_recursive import merge_sort_recursive as merge_sort
 
 #Teste manual
 def test_manual():
@@ -7,7 +7,7 @@ def test_manual():
         entrada = caso["entrada"]
         esperado = caso["saida_esperada"]
 
-        resultado = merge_sort(entrada)
+        resultado = merge_sort_recursive(entrada)
 
         if resultado == esperado:
             print(f"Teste {numero}: PASSOU")
@@ -20,7 +20,7 @@ def test_manual():
 #teste utilizando assert
 def test_assert():
     for numero, caso in enumerate(casos_de_teste, start=1):
-        resultado = merge_sort(caso["entrada"])
+        resultado = merge_sort_recursive(caso["entrada"])
 
         assert resultado == caso["saida_esperada"], (
             f"Teste {numero} falhou: "
