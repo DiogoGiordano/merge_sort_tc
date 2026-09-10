@@ -1,52 +1,25 @@
-def merge_sort(arr):
-    """
-    Recebe um array e retorna um novo array ordenado.
-    """
+def merge_sort_recursive(arr):
 
-    # Caso-base:
-    # Um array vazio ou com apenas um elemento já está ordenado.
-    if len(arr) <= 1:
-        return arr.copy()
+  if len(arr) <= 1:
+    return arr
 
-    # Encontra a posição central do array.
-    meio = len(arr) // 2
+  mid = len(arr) // 2
+  left = merge_sort_recursive(arr[:mid])
+  right = merge_sort_recursive(arr[mid:])
 
-    # Divide o array em duas partes.
-    esquerda = arr[:meio]
-    direita = arr[meio:]
-
-    # Ordena cada metade recursivamente.
-    esquerda_ordenada = merge_sort(esquerda)
-    direita_ordenada = merge_sort(direita)
-
-    # Junta as duas metades ordenadas.
-    return intercalar(esquerda_ordenada, direita_ordenada)
+  return merge(left, right)
 
 
-def intercalar(esquerda, direita):
-    """
-    Junta dois arrays que já estão ordenados.
-    """
-
-    resultado = []
-
-    # Índices usados para percorrer os dois arrays.
-    i = 0
-    j = 0
-
-    # Compara os elementos das duas partes.
-    while i < len(esquerda) and j < len(direita):
-        if esquerda[i] <= direita[j]:
-            resultado.append(esquerda[i])
-            i += 1
-        else:
-            resultado.append(direita[j])
-            j += 1
-
-    # Adiciona os elementos que sobraram na parte esquerda.
-    resultado.extend(esquerda[i:])
-
-    # Adiciona os elementos que sobraram na parte direita.
-    resultado.extend(direita[j:])
-
-    return resultado
+def merge(left, right):
+  result = []
+  i = j = 0
+  while i < len(left) and j < len(right):
+    if left[i] < right[j]:
+      result.append(left[i])
+      i += 1
+    else:
+      result.append(right[j])
+      j += 1
+  result.extend(left[i:])
+  result.extend(right[j:])
+  return result
