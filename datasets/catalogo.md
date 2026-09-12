@@ -12,6 +12,7 @@ reprodução e discussão na apresentação.
 | V02 | `validos/iris_classes.txt` | `str` | 15 | Ordenação lexicográfica das classes | `validos/iris_classes.expected.txt` |
 | V03 | `validos/strings_numericas.json` | `str` | 3 | Ordem lexicográfica, não numérica | `validos/strings_numericas.expected.json` |
 | V04 | `data.py` | `int` | 30 instâncias | Casos de borda e combinações numéricas | Campo `saida_esperada` |
+| V05 | `validos/iris_amostra.csv` | `float` | 15 | Coluna `petal_length` extraída do CSV | `validos/iris_petal_length.expected.txt` |
 
 O arquivo `validos/iris_amostra.csv` é a fonte local das duas primeiras
 instâncias do Iris. Ele não deve ser enviado diretamente ao Merge sort: o
@@ -29,16 +30,20 @@ cabeçalho e as colunas precisam ser interpretados antes.
 
 ## Datasets externos selecionados
 
-| Dataset | Uso escolhido | Status no repositório | Decisão |
-| --- | --- | --- | --- |
-| UCI Iris | Uma coluna numérica e uma coluna textual | Há amostra local de 15 linhas | Usar na demonstração |
-| MovieLens 100K | `rating` ou `timestamp` após extração | Fonte documentada, sem cópia integral | Usar somente se houver tempo para baixar e registrar a versão |
-| NYC 311 | Datas, identificadores ou valores após limpeza | Apenas fonte documentada | Deixar como aplicação adicional, não como teste principal |
-| IBGE população | Coluna de população convertida para inteiro | Apenas fonte documentada | Opcional |
+| ID | Dataset | Uso escolhido | Status no repositório | Decisão |
+| --- | --- | --- | --- | --- |
+| E01 | UCI Iris | Uma coluna numérica e uma coluna textual | Há amostra local de 15 linhas | Usar na demonstração |
+| E02 | MovieLens 100K | `rating` ou `timestamp` após extração | Fonte documentada, sem cópia integral | Usar somente se houver tempo para baixar e registrar a versão |
+| E03 | NYC 311 | Datas, identificadores ou valores após limpeza | Apenas fonte documentada | Deixar como aplicação adicional, não como teste principal |
+| E04 | IBGE população | Coluna de população convertida para inteiro | Apenas fonte documentada | Opcional |
+| E05 | Compras públicas | Valores, datas ou órgãos após limpeza | Apenas fonte documentada | Opcional |
 
 Para o seminário, dois datasets reais são suficientes: Iris como exemplo pequeno
 e MovieLens 100K como exemplo maior. Os casos inválidos devem ser pequenos e
 controlados, pois foram criados para demonstrar as restrições da função.
+
+O arquivo `catalogo.json` é a representação estruturada desses registros para
+uso pela CLI. O arquivo Markdown permanece como documentação explicativa.
 
 ## Critério de aprovação
 

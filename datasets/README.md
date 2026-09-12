@@ -6,6 +6,10 @@ seminário. Nenhum arquivo deste diretório implementa o algoritmo.
 A camada de leitura independente está em [`../dataset_io/README.md`](../dataset_io/README.md).
 Ela prepara listas sem importar ou executar o Merge sort.
 
+O catálogo usado pela CLI está em [`catalogo.json`](catalogo.json). A versão
+Markdown [`catalogo.md`](catalogo.md) continua sendo a referência para leitura
+humana e explicação das decisões.
+
 ## Contrato da implementação
 
 A função atual recebe uma sequência finita de elementos que possam ser
@@ -33,6 +37,10 @@ classificada como fora do escopo da implementação atual.
 - `strings_numericas.json`: strings comparáveis, mas que demonstram a diferença
   entre ordem lexicográfica e ordem numérica;
 - `strings_numericas.expected.json`: saída esperada desse caso.
+
+O catálogo identifica esses arquivos pelos IDs `V01` a `V05`. `V04` aponta para
+uma fixture Python com os 30 casos do algoritmo e, por isso, é listado, mas não
+é carregado pela camada de leitura.
 
 ### `invalidos/`
 
@@ -78,6 +86,14 @@ baixá-lo da fonte oficial.
 5. Repetir o procedimento com os arquivos em `invalidos/` e registrar a
    exceção ou a ausência de garantia, sem considerar isso uma saída válida.
 6. Registrar também o tamanho da entrada e se a lista original foi preservada.
+
+Também é possível executar a inspeção pelo catálogo:
+
+```bash
+python3 -m dataset_io.cli datasets list
+python3 -m dataset_io.cli datasets inspect V01 --sample 5
+python3 -m dataset_io.cli datasets validate V01
+```
 
 ## Distinções importantes
 

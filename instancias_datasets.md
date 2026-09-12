@@ -432,3 +432,20 @@ As amostras locais do Iris são pequenas e reproduzíveis. O MovieLens 100K fico
 registrado como fonte externa para um teste maior; caso seja utilizado, a equipe
 deve registrar a versão, a coluna extraída, a data de acesso e o resultado da
 execução, sem afirmar que o dataset foi testado antes disso.
+
+## 12. Gerenciamento pela CLI
+
+O catálogo estruturado está em [`datasets/catalogo.json`](datasets/catalogo.json)
+e pode ser consultado sem executar o Merge sort:
+
+```bash
+python3 -m dataset_io.cli datasets list
+python3 -m dataset_io.cli datasets inspect V01 --sample 5
+python3 -m dataset_io.cli datasets validate V01
+```
+
+`list` reúne entradas válidas, inválidas e externas. `inspect` mostra metadados
+e uma amostra. `validate` verifica se uma entrada local satisfaz as restrições;
+ele retorna código `0` para entrada válida, `1` para entrada inválida e `2`
+quando o dataset não pode ser validado localmente. Fontes externas são apenas
+catalogadas e não são baixadas pela CLI.
