@@ -1,35 +1,48 @@
 from data import casos_de_teste
-from merge_sort_recursive import merge_sort_recursive as merge_sort
+from merge_sort_recursive import merge_sort_recursive
+from merge_sort_iterative import merge_sort_iterative
 
-#Teste manual
-def test_manual():
+
+def testar_recursive():
+    print("=" * 45)
+    print("MERGE SORT RECURSIVO")
+    print("=" * 45)
+
     for numero, caso in enumerate(casos_de_teste, start=1):
-        entrada = caso["entrada"]
-        esperado = caso["saida_esperada"]
+        resultado, metrics = merge_sort_recursive(caso["entrada"].copy())
 
-        resultado = merge_sort_recursive(entrada)
-
-        if resultado == esperado:
-            print(f"Teste {numero}: PASSOU")
+        if resultado == caso["saida_esperada"]:
+            status = "PASSOU"
         else:
-            print(f"Teste {numero}: FALHOU")
-            print(f"  Entrada:   {entrada}")
-            print(f"  Esperado:  {esperado}")
-            print(f"  Resultado: {resultado}")
+            status = "FALHOU"
 
-#teste utilizando assert
-def test_assert():
-    for numero, caso in enumerate(casos_de_teste, start=1):
-        resultado = merge_sort_recursive(caso["entrada"])
-
-        assert resultado == caso["saida_esperada"], (
-            f"Teste {numero} falhou: "
-            f"esperado {caso['saida_esperada']}, "
-            f"mas recebeu {resultado}"
+        print(
+            f"Teste {numero:02d}: {status} | "
+            f"Comparações: {metrics['comparisons']:3d} | "
+            f"Movimentos: {metrics['movements']:3d}"
         )
 
-    print("Todos os testes passaram!")
+
+def testar_iterative():
+    print()
+    print("-" * 10)
+    print("MERGE SORT ITERATIVO")
+    print("-" * 10)
+
+    for numero, caso in enumerate(casos_de_teste, start=1):
+        resultado, metrics = merge_sort_iterative(caso["entrada"].copy())
+
+        if resultado == caso["saida_esperada"]:
+            status = "PASSOU"
+        else:
+            status = "FALHOU"
+
+        print(
+            f"Teste {numero:02d}: {status} | "
+            f"Comparações: {metrics['comparisons']:3d} | "
+            f"Movimentos: {metrics['movements']:3d}"
+        )
 
 
-
-test_assert()
+testar_recursive()
+testar_iterative()
