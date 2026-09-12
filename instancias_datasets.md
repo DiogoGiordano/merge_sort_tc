@@ -114,6 +114,12 @@ iterativa atual escreve os blocos ordenados de volta em `arr`, portanto modifica
 a lista recebida, embora ainda utilize listas temporárias durante a
 intercalação.
 
+Observação sobre a versão efetivamente presente no repositório: o arquivo atual
+`merge_sort_recursive.py` retorna `arr` diretamente quando `len(arr) <= 1` e usa
+`<` na intercalação. A descrição de uma versão que retorna uma nova lista no
+caso-base e usa `<=` corresponde à versão preferida/esperada pelo grupo e deve
+ser alinhada ao código antes da apresentação.
+
 ## 4. Instâncias válidas e casos de borda
 
 | Categoria | Entrada | Saída esperada | Observação |
@@ -409,4 +415,20 @@ pelo seminário.
 > reais fornecem muitas instâncias possíveis, mas precisam ser limpos e
 > transformados em valores ou registros comparáveis. O Merge sort divide a
 > entrada, ordena as partes e as intercala em `Θ(n log n)`. Como esse tempo é
-> limitado por um polinômio, o problema é tratável em tempo polinomial.”
+> limitado por um polinômio, o problema é tratável em tempo polinomial."
+
+## 11. Artefatos locais para os testes
+
+As amostras e o catálogo de decisões foram separados deste documento:
+
+- [`datasets/README.md`](datasets/README.md): instruções e regras de uso;
+- [`datasets/catalogo.md`](datasets/catalogo.md): entradas, fontes, tamanhos e
+  critérios de aprovação;
+- [`datasets/validos/`](datasets/validos/): entradas válidas e saídas esperadas;
+- [`datasets/invalidos/`](datasets/invalidos/): entradas inválidas ou fora do
+  escopo da implementação atual.
+
+As amostras locais do Iris são pequenas e reproduzíveis. O MovieLens 100K ficou
+registrado como fonte externa para um teste maior; caso seja utilizado, a equipe
+deve registrar a versão, a coluna extraída, a data de acesso e o resultado da
+execução, sem afirmar que o dataset foi testado antes disso.

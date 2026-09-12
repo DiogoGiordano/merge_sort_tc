@@ -1,0 +1,15 @@
+Iris-setosa
+Iris-versicolor
+Iris-virginica
+Iris-setosa
+Iris-versicolor
+Iris-virginica
+Iris-setosa
+Iris-versicolor
+Iris-virginica
+Iris-setosa
+Iris-versicolor
+Iris-virginica
+Iris-setosa
+Iris-versicolor
+Iris-virginica
