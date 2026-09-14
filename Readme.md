@@ -57,6 +57,9 @@ Uma instância é uma sequência específica de valores. Exemplo: `A = [8, 3, 5,
 <br>
 > ⚠️ Para o Merge Sort, a restrição relevante é a comparabilidade dos elementos — não é necessário que sejam números, mas eles precisam ser comparáveis entre si. Por exemplo, uma lista de strings ou uma lista de objetos com um método de comparação definido são entradas válidas.
 
+### Objetivo
+Depende exclusivamente do problema que se quer resolver: ordenar números, strings, datas, ou qualquer outro tipo de dado que possua uma relação de ordem definida. O objetivo é sempre o mesmo: reorganizar os elementos da lista de entrada em ordem não decrescente.
+
 
 ### Caso-limite
 
