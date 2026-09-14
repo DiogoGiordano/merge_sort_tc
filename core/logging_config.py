@@ -3,9 +3,22 @@ from pathlib import Path
 
 from rich.logging import RichHandler
 
-#switch case com os niveis
-def setup_logging(console_level=logging.DEBUG, log_file=None
+
+def setup_logging(
+    console_level=logging.DEBUG,
+    log_file=None,
 ) -> logging.Logger:
+    """
+    Configura o sistema de logging da aplicação.
+
+    Args:
+        console_level: Nível mínimo de log exibido no console.
+        log_file: Caminho do arquivo onde os logs serão armazenados.
+
+    Returns:
+        Logger configurado para a aplicação.
+    """
+
     match console_level:
         case "DEBUG":
             console_level = logging.DEBUG

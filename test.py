@@ -1,6 +1,5 @@
 from data import casos_de_teste
-from merge_sort_recursive import merge_sort_recursive as merge_sort
-
+from algorithms.merge_sort_recursive import merge_sort_recursive
 #Teste manual
 def test_manual():
     for numero, caso in enumerate(casos_de_teste, start=1):

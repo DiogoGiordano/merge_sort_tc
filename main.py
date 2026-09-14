@@ -1,4 +1,3 @@
-
 import random
 from time import perf_counter
 
@@ -10,6 +9,21 @@ from core.logging_config import setup_logging
 
 
 def create_vector(args) -> list[int]:
+    """
+    Cria o vetor de entrada da aplicação.
+
+    Args:
+        args: Argumentos fornecidos pela linha de comando.
+
+    Returns:
+        Vetor de inteiros informado pelo usuário ou gerado aleatoriamente.
+
+    Raises:
+        ValueError: Se nenhum método de entrada for informado.
+        ValueError: Se a quantidade de valores aleatórios for inválida.
+        ValueError: Se o valor mínimo for maior que o máximo.
+    """
+
     if args.values is not None:
         return args.values.copy()
 
@@ -33,6 +47,10 @@ def create_vector(args) -> list[int]:
 
 
 def main() -> None:
+    """
+    Executa a aplicação de ordenação e análise do vetor.
+    """
+
     args = parse_arguments()
     print(args.log_level.upper())
 

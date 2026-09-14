@@ -1,9 +1,25 @@
 import logging
 from .merge_base import merge
 
+
 logger = logging.getLogger("merge_sort")
 
-def merge_sort_recursive(values: list[int], depth: int = 0) -> list[int]:
+
+def merge_sort_recursive(
+    values: list[int],
+    depth: int = 0,
+) -> list[int]:
+    """
+    Ordena um vetor usando Merge Sort recursivo.
+
+    Args:
+        values: Vetor que será ordenado.
+        depth: Profundidade atual da recursão.
+
+    Returns:
+        Vetor ordenado.
+    """
+
     logger.debug(
         "Profundidade %d: processando %s",
         depth,
@@ -20,8 +36,15 @@ def merge_sort_recursive(values: list[int], depth: int = 0) -> list[int]:
 
     middle = len(values) // 2
 
-    left = merge_sort_recursive(values[:middle], depth + 1)
-    right = merge_sort_recursive(values[middle:], depth + 1)
+    left = merge_sort_recursive(
+        values[:middle],
+        depth + 1,
+    )
+
+    right = merge_sort_recursive(
+        values[middle:],
+        depth + 1,
+    )
 
     result = merge(left, right)
 

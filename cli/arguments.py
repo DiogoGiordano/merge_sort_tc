@@ -1,8 +1,14 @@
-
 import argparse
 
 
 def parse_arguments() -> argparse.Namespace:
+    """
+    Processa os argumentos fornecidos pela linha de comando.
+
+    Returns:
+        Argumentos informados pelo usuário.
+    """
+
     parser = argparse.ArgumentParser(
         prog="merge-sort",
         description="Ordenação e análise de vetores usando Merge Sort.",
