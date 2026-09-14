@@ -7,15 +7,21 @@ Seminário sobre um problema pertencente à classe **P**. Tema do grupo: **probl
 ---
 
 ## Sumário
+1. [Merge sort — ideia central](#1-merge-sort--ideia-central)
+2. [Descrição do problema](#2-descrição-do-problema)
+3. [Justificativa de tratabilidade (por que está em P)](#3-justificativa-de-tratabilidade-por-que-está-em-p)
+4. [Exemplos de aplicação](#4-exemplos-de-aplicação)
+5. [Algoritmo implementado](#5-algoritmo-implementado-funcionamento-complexidade-corretude)
+6. [Implementação](#6-implementação)
 
-1. [Descrição do problema](#1-descrição-do-problema)
-2. [Justificativa de tratabilidade (por que está em P)](#2-justificativa-de-tratabilidade-por-que-está-em-p)
-3. [Exemplos de aplicação](#3-exemplos-de-aplicação)
-4. [Algoritmo implementado](#4-algoritmo-implementado)
-5. [Implementação](#5-implementação)
 ---
+<br><br><br><br><br><br><br>
 
-## 1. Descrição do problema
+## 1. Merge sort — ideia central
+
+ Merge Sort é um algoritmo de ordenação eficiente que organiza os elementos de uma lista ou vetor usando a técnica de dividir para conquistar. Foi inventado pelo brilhante matemático e físico húngaro-americano John von Neumann no ano de 1945 Ele divide a lista em sublistas menores, ordena essas sublistas e, em seguida, as combina para formar uma lista ordenada final. O Merge Sort é conhecido por sua estabilidade e complexidade de tempo garantida de O(n log n), tornando-o adequado para grandes conjuntos de dados.
+
+## 2. Descrição do problema
 
 Seguindo o roteiro de especificação da Aula 02 (entrada, saída, restrições, objetivo, caso-limite):
 
@@ -38,12 +44,19 @@ Uma instância é uma sequência específica de valores. Exemplo: `A = [8, 3, 5,
 
 ### Restrições (o que torna uma saída válida)
 
+ depende obrigatoriamente de operadores de comparação (como "maior que" >, "menor que" < ou "igual a" =). Se os dados não possuem uma lógica de ordem, ele não funciona.
+
 1. **Preservação (permutação):** a saída deve ser uma permutação exata da entrada — mesma quantidade de elementos, sem adicionar, remover ou duplicar nenhum valor.
 2. **Ordem:** todo elemento na posição `i` deve ser menor ou igual ao elemento na posição `i+1`.
 3. **Comparabilidade:** os elementos precisam ter uma relação de ordem bem definida (números, strings em ordem alfabética, datas, ou objetos com um critério de comparação explícito).
 4. **Estabilidade (opcional/desejável):** elementos com o mesmo valor devem manter a ordem relativa original — o Merge Sort, implementado corretamente, garante essa propriedade, o que o diferencia de algoritmos como quicksort e selection sort.
+5. **Tipos de dados mistos sem regra:** Tentar ordenar uma lista que mistura o número 10, a palavra "casa" e uma imagem. O algoritmo não saberá dizer se 10 vem antes ou depois de uma imagem.
+6. **Dados Não Mensuráveis da Física ou Matemática Moderna:** Números Complexos, na matemática, os números complexos (como 3 + 4i) não possuem uma ordem linear natural. Você não pode afirmar categoricamente se 3 + 4i é "maior" ou "menor" que 5 + 2i. Para ordená-los com Merge Sort, você precisaria criar uma regra artificial (como ordenar apenas pela parte real ou pelo módulo).
+7. **Fluxos de Dados Infinitos (Data Streams):** Como o Merge Sort funciona dividindo a lista original consecutivamente ao meio, ele exige saber o tamanho total ou o fim da estrutura de dados. Se você estiver recebendo um fluxo infinito de dados em tempo real (como dados de sensores de temperatura transmitidos a cada segundo sem parar), o Merge Sort não consegue iniciar, pois ele nunca terminará a etapa de divisão para poder começar a ordenar. Para esses casos, usam-se algoritmos como o Insertion Sort ou estruturas como Heaps.
 
+<br>
 > ⚠️ Para o Merge Sort, a restrição relevante é a comparabilidade dos elementos — não é necessário que sejam números, mas eles precisam ser comparáveis entre si. Por exemplo, uma lista de strings ou uma lista de objetos com um método de comparação definido são entradas válidas.
+
 
 ### Caso-limite
 
@@ -65,9 +78,36 @@ Entrada:  [3, "gato", 7]
 ```
 Não é uma instância válida do problema: não existe uma relação de ordem natural entre um número e uma string nesse contexto, então "ordenar" não está definido. Isso mostra que a restrição de comparabilidade não é decorativa — ela delimita exatamente quais entradas o problema aceita.
 
+
+### Vantagens e desvantagens do Merge Sort
+
+#### Vantagem
+Ele é considerado muito rápido para grandes volumes de dados. Na computação, a categoria de tempo \(O(n \log n)\) é o limite de velocidade teórico para algoritmos de ordenação baseados em comparação. Ele deixa algoritmos quadráticos como Bubble Sort ou Insertion Sort (que são \(O(n^2)\)) comendo poeira quando a lista cresce. <br>
+A maior vantagem do Merge Sort é a sua previsibilidade e consistência. Ele oferece uma garantia matemática de tempo. Ele nunca vai "estourar" o tempo de processamento virando um algoritmo lento, não importa se os dados vierem organizados do pior jeito possível.
+
+#### Desvantagem
+A grande desvantagem do Merge Sort não está no tempo, mas sim no espaço (memória).
+- **Consumo de Memória Elevado (\(O(n)\)):** Ele não consegue ordenar os dados alterando as caixinhas diretamente no vetor original (in-place). Para juntar as metades de forma ordenada, ele precisa criar cópias temporárias dessas listas na memória RAM. Se você for ordenar uma lista de 10 GB de dados, o Merge Sort precisará de outros 10 GB de memória livre apenas para fazer a intercalação.
+- **Desperdício com listas já ordenadas:** Como vimos, ele é "teimoso". Ele gasta o mesmo esforço computacional com uma lista já perfeita do que com uma bagunçada.
+
+#### As vantagens dependem do número da entrada (tamanho da lista)?
+
+Dependem totalmente. A eficiência do Merge Sort só brilha de verdade quando a entrada de dados é grande.
+- **Para entradas pequenas (ex: menos de 50 a 100 elementos):** O Merge Sort é mais lento que o simples Insertion Sort. Isso acontece porque o custo de abrir tantas funções e dividir a lista na memória gera um "peso" (overhead) que não compensa para poucos dados. Em listas pequenas, um loop simples resolve mais rápido.
+- **Para entradas gigantescas:** Ele se torna imbatível e suas vantagens de estabilidade e consistência de tempo esmagam os competidores mais simples.
+
+| **Vantagens** | **Desvantagens** |
+|---|---|
+| Θ(n log n) em todos os casos | Necessita de memória auxiliar O(n) |
+| Comportamento previsível | Não é *in-place* na versão tradicional |
+| Algoritmo estável | Pode ter *overhead* em entradas pequenas |
+| Adequado para grandes volumes | Não aproveita totalmente entradas já ordenadas |
+| Eficiente para listas encadeadas | Versão recursiva utiliza a pilha de chamadas |
+
+
 ---
 
-## 2. Justificativa de tratabilidade (por que está em P)
+## 3. Justificativa de tratabilidade (por que está em P)
 
 ### O que mede o tamanho da entrada (n)
 
@@ -121,7 +161,7 @@ Isso acontece porque a divisão ao meio e a estrutura do merge não dependem da 
 
 ---
 
-## 3. Exemplos de aplicação
+## 4. Exemplos de aplicação
 
 - **Ordenação externa (external sorting):** quando os dados não cabem inteiramente na memória RAM (ex.: arquivos de log gigantes, bancos de dados), o Merge Sort é a base dos algoritmos usados, pois processa blocos e faz merge sem precisar acessar tudo simultaneamente.
 - **Bibliotecas padrão de linguagens:** o **Timsort**, usado por padrão em Python (`sorted()`, `.sort()`) e no Java, é um híbrido entre Merge Sort e Insertion Sort — a espinha dorsal continua sendo o merge.
@@ -131,7 +171,7 @@ Isso acontece porque a divisão ao meio e a estrutura do merge não dependem da 
 
 ---
 
-## 4. Algoritmo implementado
+## 5. Algoritmo implementado (funcionamento, complexidade, corretude)
 
 ### Ideia central
 
@@ -189,7 +229,7 @@ O código em `mergesort.py` implementa a versão **[recursiva/iterativa — comp
 
 ---
 
-## 5. Implementação
+## 6. Implementação
 
 - **Linguagem:** Python 3.
 - **Arquivo principal:** `mergesort.py` (ou `src/mergesort.py`).
@@ -205,4 +245,3 @@ O código em `mergesort.py` implementa a versão **[recursiva/iterativa — comp
 - **Repositório GitHub:** 
 
 ---
-
