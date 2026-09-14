@@ -96,3 +96,67 @@ a corretude exige duas obrigações:
     1) correção da resposta: ao terminar atende à especificação.
     2) término: encerra após um número finito de passos.
 - corretude do problema: a solução candidata é válida ou ótima para uma instância do problema
+
+
+# crescimento do tempo e classes de problemas (como o trabalho cresce quando o tamanho da entrada aumenta)
+
+    temos que saber 4 pontos dessa aula:
+    1) definir o tamanho da entrada: dizer claramente o que n mede
+    2) comparar crescimentos: reconhecer linear, polinomial, exponencial e fatorial
+    3) interpretar limites: usar O, Ω e Θ sem confundir com casos
+    4) situar classes: 
+        - P: problemas que podem ser resolvidos em tempo polinomial.
+        - NP: problemas que podem ser verificados em tempo polinomial.
+        - NP-completo: problemas que são os mais difíceis de NP.
+        - NP-difícil: problemas que são pelo menos tão difíceis quanto os problemas NP-completos.
+
+- o que devemos saber ao final do conteudo das 3 aulas:
+    - como especificar um problema
+    - como distinguir solução candidata, válida e ótima
+    - como comparar resolver e verificar
+    - como compreender a corretude do problema
+    - como analisar o crescimento do tempo de execução de um algoritmo
+
+## Antes de medir o tempo, defina a entrada (n) é uma medida. O significado muda com o problema. T(n) é uma função e não um cronometro. É uma forma de contar como o trabalho muda quando n aumenta, contamos  operações importantes, como:
+    - comparações;
+    - somas;
+    - visitas a elementos;
+
+## Melhor, médio e pior caso
+- melhor caso: o menor número de operações importantes que o algoritmo realiza para uma entrada de tamanho n.
+- pior caso: o maior número de operações importantes que o algoritmo realiza para uma entrada de tamanho n.
+- caso médio: o número esperado de operações importantes que o algoritmo realiza para uma entrada
+
+## O (Big Oh): um teto para o crescimento
+- Big O descreve um teto. O trabalho real pode ser menor, mas não ultrapassa esse ritmo para entradas suficientemente grandes.
+
+## Ω (Omega): um piso para o crescimento
+- Ω descreve um piso. O trabalho real pode ser maior, mas não pode ficar abaixo dele.
+
+## Θ (Teta): quando teto e piso coincidem
+- Θ descreve um ritmo exato. O trabalho real não pode ultrapassar nem ficar abaixo dele.
+- Use Θ somente quando máximo e mínimo crescem no mesmo ritmo. Se crescem de maneiras diferentes, ainda falta informação.
+
+## Não decore símbolos. Faça perguntas
+    1) O que aumenta na entrada? defina n.
+    2) Qual situação está sendo analisada? melhor, médio ou pior caso.
+    3) Quais máximo e mínimo posso demonstrar? procure teto e piso.
+    4) Os dois crescem no mesmo ritmo? se sim, use Θ
+    CASO qual entrada observamos?
+    LIMITE que crescimento conseguimos demonstrar?
+
+## Expoente fixo
+### Polinomial: expoente fixo, crescimento controlado
+- POR QUE COSTUMA SER CONTROLÁVEL? O expoente é fixo. Por exemplo, em n³, o grau continua 3 mesmo quando n cresce.
+
+### Exponencial: Cada item duplica as possibilidades
+### Fatorial: complexidade nível fujam para as montanhas
+
+## Encontrar a resposta em tempo polinomial
+
+## NP verificar rapidamente um 
+
+## Redução: traduzir um problema em outro
+- Como um adaptador universal: a redução muda rapidamente o formato da pergunta, mas preserva sua resposta.
+
+## NP-difícil pode estar fora de NP
