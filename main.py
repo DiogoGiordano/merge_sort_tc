@@ -67,7 +67,7 @@ def main() -> None:
 
         start = perf_counter()
 
-        ordered = merge_sort_recursive(vector)
+        ordered, metrics = merge_sort_recursive(vector)
 
         if args.descending:
             ordered.reverse()
@@ -80,6 +80,8 @@ def main() -> None:
         if args.metrics:
             print(f"Tempo: {elapsed:.8f} segundos")
             print(f"Elementos: {len(vector)}")
+            print(f"Comparações: {metrics['comparisons']}")
+            print(f"Movimentos: {metrics['movements']}")
 
     except ValueError as exception:
         logger.error("%s", exception)
