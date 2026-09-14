@@ -67,7 +67,10 @@ def main() -> None:
 
         start = perf_counter()
 
-        ordered, metrics = merge_sort_recursive(vector)
+        if args.type == 2:
+            ordered, metrics = merge_sort_iterative(vector.copy())
+        else:
+            ordered, metrics = merge_sort_recursive(vector)
 
         if args.descending:
             ordered.reverse()
